@@ -14,12 +14,10 @@ import javax.swing.JOptionPane;
   			try{
   				inputstr=JOptionPane.showInputDialog("请输入你需要转换的十进制数："); 
   				resourceNumber=Double.parseDouble(inputstr); 
-			}catch(){		 
-  			 
-  			
-  			
+			}catch(NumberFormatException e){		 
   			JOptionPane.showMessageDialog(null,"请输入数字（十进制数）！","提示信息",0); 				 
-			}		 		 
+			}	
+		 
   			//处理输入的数据，保留整数部分。 
   			int temResourceNumber=(int) resourceNumber; 
   			inputstr=JOptionPane.showInputDialog("请输入你需要转换进制（2~16之间的进制数）:"); 
