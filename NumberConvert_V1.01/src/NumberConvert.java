@@ -1,37 +1,33 @@
 import javax.swing.JOptionPane; 
  public class NumberConvert { 
-  
+  //å®šä¹‰1~36è¿›åˆ¶çš„å­—ç¬¦é›†.
 	static String str="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	 
- 	
-	
-	 
 	 
 	 
 	 public static void main(String[] args) { 
   
-         LinkedStack<String> stack = new LinkedStack<String>(); //´´½¨¿ÕÕ» 
+         LinkedStack<String> stack = new LinkedStack<String>(); //åˆ›å»ºç©ºæ ˆ 
          String inputstr; 
          double resourceNumber = 0,conversion= 0; 
         int remainder,business;	 
   			
   			
-  				inputstr=JOptionPane.showInputDialog("ÇëÊäÈëÄãÐèÒª×ª»»µÄÊ®½øÖÆÊý£º"); 
+  				inputstr=JOptionPane.showInputDialog("è¯·è¾“å…¥ä½ éœ€è¦è½¬æ¢çš„åè¿›åˆ¶æ•°ï¼š"); 
   				resourceNumber=Double.parseDouble(inputstr); 
  			 		 
   			 
   			
   			
-  			//	JOptionPane.showMessageDialog(null,"ÇëÊäÈëÊý×Ö£¨Ê®½øÖÆÊý£©£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+  			//	JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥æ•°å­—ï¼ˆåè¿›åˆ¶æ•°ï¼‰ï¼","æç¤ºä¿¡æ¯",0); 				 
   					 		 
-  			//´¦ÀíÊäÈëµÄÊý¾Ý£¬±£ÁôÕûÊý²¿·Ö¡£ 
+  			//å¤„ç†è¾“å…¥çš„æ•°æ®ï¼Œä¿ç•™æ•´æ•°éƒ¨åˆ†ã€‚ 
   			int temResourceNumber=(int) resourceNumber; 
-  			inputstr=JOptionPane.showInputDialog("ÇëÊäÈëÄãÐèÒª×ª»»½øÖÆ£¨2~16Ö®¼äµÄ½øÖÆÊý£©:"); 
+  			inputstr=JOptionPane.showInputDialog("è¯·è¾“å…¥ä½ éœ€è¦è½¬æ¢è¿›åˆ¶ï¼ˆ2~16ä¹‹é—´çš„è¿›åˆ¶æ•°ï¼‰:"); 
   			 
  	        conversion=Double.parseDouble(inputstr); 
  	         
  	        
- 	        //¶ÔÓÚÊäÈëµÄÊý×ÖÊÇÕûÊý£¬²¢ÇÒ´óÓÚÁãÊ±¡£ 
+ 	        //å¯¹äºŽè¾“å…¥çš„æ•°å­—æ˜¯æ•´æ•°ï¼Œå¹¶ä¸”å¤§äºŽé›¶æ—¶ã€‚ 
   			if((resourceNumber-temResourceNumber)==0&&temResourceNumber>0){ 
   				try 
   				{ 
@@ -61,21 +57,21 @@ import javax.swing.JOptionPane;
   	 	 			} 	 	 	 			 
   	 	 	 		}	 	 	 			 
   	 	 	 		else 
-  	 	 				JOptionPane.showMessageDialog(null,"ÇëÊäÈë2~36ÒÔÄÚµÄÊý×Ö£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+  	 	 				JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥2~36ä»¥å†…çš„æ•°å­—ï¼","æç¤ºä¿¡æ¯",0); 				 
  				}		 
   			catch (NumberFormatException exception) 
   			{ 
- 	 			JOptionPane.showMessageDialog(null,"ÇëÊäÈëÊý×Ö(ËùÒª×ª»»µÄ½øÖÆÊý)£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+ 	 			JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥æ•°å­—(æ‰€è¦è½¬æ¢çš„è¿›åˆ¶æ•°)ï¼","æç¤ºä¿¡æ¯",0); 				 
  			}	 
   				 
   			} 
   			 
   			 
   			 
-  			//¶ÔÓÚÊäÈëµÄÊý×ÖÊÇ´óÓÚµÈÓÚÁãµÄÐ¡ÊýÊ±¡£ 
+  			//å¯¹äºŽè¾“å…¥çš„æ•°å­—æ˜¯å¤§äºŽç­‰äºŽé›¶çš„å°æ•°æ—¶ã€‚ 
   			if((resourceNumber-temResourceNumber)>0&&resourceNumber>=0){ 
   				String number=""; 
-  				//¶ÔÐ¡Êý²¿·Ö½øÐÐ´¦Àí 
+  				//å¯¹å°æ•°éƒ¨åˆ†è¿›è¡Œå¤„ç† 
   				double littleNumber=resourceNumber-(double)temResourceNumber; 
   				String a="."; 
   				while(littleNumber-(int)littleNumber!=0.0){ 
@@ -87,7 +83,7 @@ import javax.swing.JOptionPane;
   			/*	int getNumber=(int) littleNumber; 
   				a+=String.valueOf(getNumber); 
  				*/ 
-  				//¶ÔÓÚÕûÊý²¿·Ö´¦Àí£¬±£´æÔÚ×Ö·û´®numberÖÐ¡£ 
+  				//å¯¹äºŽæ•´æ•°éƒ¨åˆ†å¤„ç†ï¼Œä¿å­˜åœ¨å­—ç¬¦ä¸²numberä¸­ã€‚ 
   				try{	 
   				if (conversion>1 && conversion<17){ 
   	 	 	 		business=temResourceNumber; 
@@ -118,20 +114,20 @@ import javax.swing.JOptionPane;
   	 	 			System.out.print(str);  
   	 	 	 		}	 	 	 			 
   	 	 	 		else 
-  	 	 				{JOptionPane.showMessageDialog(null,"ÇëÊäÈë2~16ÒÔÄÚµÄÊý×Ö£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+  	 	 				{JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥2~16ä»¥å†…çš„æ•°å­—ï¼","æç¤ºä¿¡æ¯",0); 				 
  				 
   	 	 				} 		 
   				} 
   			catch (NumberFormatException exception) 
   			{ 
- 	 			JOptionPane.showMessageDialog(null,"ÇëÊäÈëÊý×Ö(ËùÒª×ª»»µÄ½øÖÆÊý)£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+ 	 			JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥æ•°å­—(æ‰€è¦è½¬æ¢çš„è¿›åˆ¶æ•°)ï¼","æç¤ºä¿¡æ¯",0); 				 
  			}	 
   				 
   				System.out.println(a); 
   			} 
   			 
   			 
- 	        //¶ÔÓÚÊäÈëµÄÊý×ÖÊÇÕûÊý£¬²¢ÇÒÐ¡ÓÚÁãÊ±¡£ 
+ 	        //å¯¹äºŽè¾“å…¥çš„æ•°å­—æ˜¯æ•´æ•°ï¼Œå¹¶ä¸”å°äºŽé›¶æ—¶ã€‚ 
   			if((resourceNumber-temResourceNumber)==0&&temResourceNumber<0){ 
   				try 
   				{ 
@@ -162,21 +158,21 @@ import javax.swing.JOptionPane;
   	 	 			} 	 	 	 			 
   	 	 	 		}	 	 	 			 
   	 	 	 		else 
-  	 	 				JOptionPane.showMessageDialog(null,"ÇëÊäÈë2~36ÒÔÄÚµÄÊý×Ö£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+  	 	 				JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥2~36ä»¥å†…çš„æ•°å­—ï¼","æç¤ºä¿¡æ¯",0); 				 
  				}		 
   			catch (NumberFormatException exception) 
   			{ 
- 	 			JOptionPane.showMessageDialog(null,"ÇëÊäÈëÊý×Ö(ËùÒª×ª»»µÄ½øÖÆÊý)£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+ 	 			JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥æ•°å­—(æ‰€è¦è½¬æ¢çš„è¿›åˆ¶æ•°)ï¼","æç¤ºä¿¡æ¯",0); 				 
  			}	 
   				 
   			}
   
   			
-  			//¶ÔÓÚÊäÈëµÄÊý×ÖÊÇÐ¡ÓÚµÈÓÚÁãµÄÐ¡ÊýÊ±¡£ 
+  			//å¯¹äºŽè¾“å…¥çš„æ•°å­—æ˜¯å°äºŽç­‰äºŽé›¶çš„å°æ•°æ—¶ã€‚ 
   			if((resourceNumber-temResourceNumber)<0&&resourceNumber<=0){ 
   				
   				String number=""; 
-  				//¶ÔÐ¡Êý²¿·Ö½øÐÐ´¦Àí 
+  				//å¯¹å°æ•°éƒ¨åˆ†è¿›è¡Œå¤„ç† 
   				double littleNumber=Math.abs(resourceNumber-(double)temResourceNumber);
   				String a="."; 
   				while(littleNumber-(int)littleNumber!=0.0){ 
@@ -188,7 +184,7 @@ import javax.swing.JOptionPane;
   			/*	int getNumber=(int) littleNumber; 
   				a+=String.valueOf(getNumber); 
  				*/ 
-  				//¶ÔÓÚÕûÊý²¿·Ö´¦Àí£¬±£´æÔÚ×Ö·û´®numberÖÐ¡£ 
+  				//å¯¹äºŽæ•´æ•°éƒ¨åˆ†å¤„ç†ï¼Œä¿å­˜åœ¨å­—ç¬¦ä¸²numberä¸­ã€‚ 
   				try{	 
   				if (conversion>1 && conversion<17){ 
   	 	 	 		business=Math.abs(temResourceNumber);
@@ -219,13 +215,13 @@ import javax.swing.JOptionPane;
   	 	 			System.out.print(str);  
   	 	 	 		}	 	 	 			 
   	 	 	 		else 
-  	 	 				{JOptionPane.showMessageDialog(null,"ÇëÊäÈë2~16ÒÔÄÚµÄÊý×Ö£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+  	 	 				{JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥2~16ä»¥å†…çš„æ•°å­—ï¼","æç¤ºä¿¡æ¯",0); 				 
  				 
   	 	 				} 		 
   				} 
   			catch (NumberFormatException exception) 
   			{ 
- 	 			JOptionPane.showMessageDialog(null,"ÇëÊäÈëÊý×Ö(ËùÒª×ª»»µÄ½øÖÆÊý)£¡","ÌáÊ¾ÐÅÏ¢",0); 				 
+ 	 			JOptionPane.showMessageDialog(null,"è¯·è¾“å…¥æ•°å­—(æ‰€è¦è½¬æ¢çš„è¿›åˆ¶æ•°)ï¼","æç¤ºä¿¡æ¯",0); 				 
  			}	 
   				 
   				System.out.println(a); 
