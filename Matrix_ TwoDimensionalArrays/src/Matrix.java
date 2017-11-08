@@ -2,90 +2,90 @@ import javax.swing.JOptionPane;
 
 public class Matrix {
 	
-		protected int rows, columns;                           //¾ØÕóĞĞÊı¡¢ÁĞÊı
-	    protected int[][] element;                             //¶şÎ¬Êı×é£¬´æ´¢¾ØÕóÔªËØ
+		protected int rows, columns;                           //çŸ©é˜µè¡Œæ•°ã€åˆ—æ•°
+	    protected int[][] element;                             //äºŒç»´æ•°ç»„ï¼Œå­˜å‚¨çŸ©é˜µå…ƒç´ 
 
-	    public Matrix(int m, int n)                            //¹¹Ôìm¡ÁnÁã¾ØÕó¡£Èôm»ònÎª¸ºÊı£¬JavaÅ×³ö¸ºÊı×é³¤¶ÈÒì³£
+	    public Matrix(int m, int n)                            //æ„é€ mÃ—né›¶çŸ©é˜µã€‚è‹¥mæˆ–nä¸ºè´Ÿæ•°ï¼ŒJavaæŠ›å‡ºè´Ÿæ•°ç»„é•¿åº¦å¼‚å¸¸
 	    {
-	        this.element = new int[m][n];                      //Êı×éÔªËØ³õÖµÎª0
+	        this.element = new int[m][n];                      //æ•°ç»„å…ƒç´ åˆå€¼ä¸º0
 	        this.rows = m;
 	        this.columns = n;
 	    }
-	    public Matrix(int n)                                   //¹¹Ôìn¡ÁnÁã·½Õó
+	    public Matrix(int n)                                   //æ„é€ nÃ—né›¶æ–¹é˜µ
 	    {
 	        this(n,n); 
 	    }
-	    public Matrix(int m, int n, int[][] value)             //¹¹Ôìm¡Án¾ØÕó£¬ÓÉvalue[][]Ìá¹©ÔªËØ
+	    public Matrix(int m, int n, int[][] value)             //æ„é€ mÃ—nçŸ©é˜µï¼Œç”±value[][]æä¾›å…ƒç´ 
 	    {
 	        this(m, n);
-	        for (int i=0; i<value.length && i<m; i++)          //valueÔªËØ²»×ãÊ±²¹0£¬ºöÂÔ¶àÓàÔªËØ
+	        for (int i=0; i<value.length && i<m; i++)          //valueå…ƒç´ ä¸è¶³æ—¶è¡¥0ï¼Œå¿½ç•¥å¤šä½™å…ƒç´ 
 	            for (int j=0; j<value[i].length && j<n; j++)
 	               this.element[i][j] = value[i][j];
 	    }
 
-	    public int getRows()                                   //·µ»Ø¾ØÕóĞĞÊı
+	    public int getRows()                                   //è¿”å›çŸ©é˜µè¡Œæ•°
 	    {
 	        return this.rows;
 	    }
-	    public int getColumns()                                //·µ»Ø¾ØÕóÁĞÊı
+	    public int getColumns()                                //è¿”å›çŸ©é˜µåˆ—æ•°
 	    {
 	        return this.columns;
 	    }
-	    public int get(int i, int j)                 //·µ»Ø¾ØÕóµÚiĞĞµÚjÁĞÔªËØ¡£Èôi¡¢jÔ½½ç£¬Å×³öĞòºÅÔ½½çÒì³£
+	    public int get(int i, int j)                 //è¿”å›çŸ©é˜µç¬¬iè¡Œç¬¬jåˆ—å…ƒç´ ã€‚è‹¥iã€jè¶Šç•Œï¼ŒæŠ›å‡ºåºå·è¶Šç•Œå¼‚å¸¸
 	    {
 	        if (i>=0 && i<this.rows && j>=0 && j<this.columns) 
 	            return this.element[i][j];
-	        throw new IndexOutOfBoundsException("i="+i+"£¬j="+j);
+	        throw new IndexOutOfBoundsException("i="+i+"ï¼Œj="+j);
 	    }
-	    public void set(int i, int j, int x)         //ÉèÖÃ¾ØÕóµÚiĞĞµÚjÁĞÔªËØÎªx¡£Èôi¡¢jÔ½½ç£¬Å×³öĞòºÅÔ½½çÒì³£
+	    public void set(int i, int j, int x)         //è®¾ç½®çŸ©é˜µç¬¬iè¡Œç¬¬jåˆ—å…ƒç´ ä¸ºxã€‚è‹¥iã€jè¶Šç•Œï¼ŒæŠ›å‡ºåºå·è¶Šç•Œå¼‚å¸¸
 	    {
 	        if (i>=0 && i<this.rows && j>=0 && j<this.columns) 
 	            this.element[i][j]=x;
-	        else throw new IndexOutOfBoundsException("i="+i+"£¬j="+j);
+	        else throw new IndexOutOfBoundsException("i="+i+"ï¼Œj="+j);
 	    }
 	    
-	    public String toString()                               //·µ»Ø¾ØÕóËùÓĞÔªËØµÄÃèÊö×Ö·û´®£¬ĞĞÖ÷Ğò±éÀú
+	    public String toString()                               //è¿”å›çŸ©é˜µæ‰€æœ‰å…ƒç´ çš„æè¿°å­—ç¬¦ä¸²ï¼Œè¡Œä¸»åºéå†
 	    {
-	        String str=" ¾ØÕó"+this.getClass().getName()+"£¨"+this.rows+"¡Á"+this.columns+"£©£º\n";
+	        String str=" çŸ©é˜µ"+this.getClass().getName()+"ï¼ˆ"+this.rows+"Ã—"+this.columns+"ï¼‰ï¼š\n";
 	        for (int i=0; i<this.rows; i++)
 	        {
 	            for (int j=0; j<this.columns; j++)
-	                str+=String.format("%6d", this.element[i][j]); //"%6d"¸ñÊ½±íÊ¾Ê®½øÖÆÕûÊıÕ¼6ÁĞ
+	                str+=String.format("%6d", this.element[i][j]); //"%6d"æ ¼å¼è¡¨ç¤ºåè¿›åˆ¶æ•´æ•°å 6åˆ—
 	            str += "\n";
 	        }
 	        return str;
 	    }
 	    
-	    //ÉèÖÃ¾ØÕóÎªmĞĞnÁĞ¡£Èô²ÎÊıÖ¸¶¨ĞĞÁĞÊı½Ï´ó£¬Ôò½«¾ØÕóÀ©Èİ£¬²¢¸´ÖÆÔ­¾ØÕóÔªËØ¡£
-	    //ÓÃÓÚ7.2.1½ÚÍ¼µÄÁÚ½Ó¾ØÕó´æ´¢½á¹¹
+	    //è®¾ç½®çŸ©é˜µä¸ºmè¡Œnåˆ—ã€‚è‹¥å‚æ•°æŒ‡å®šè¡Œåˆ—æ•°è¾ƒå¤§ï¼Œåˆ™å°†çŸ©é˜µæ‰©å®¹ï¼Œå¹¶å¤åˆ¶åŸçŸ©é˜µå…ƒç´ ã€‚
+	    //ç”¨äº7.2.1èŠ‚å›¾çš„é‚»æ¥çŸ©é˜µå­˜å‚¨ç»“æ„
 	    public void setRowsColumns(int m, int n)
 	    {
 	        if (m>0 && n>0)
 	        {
 	            if (m>this.element.length || n>this.element[0].length)
-	            {                                                  //²ÎÊıÖ¸¶¨µÄĞĞÊı»òÁĞÊı½Ï´óÊ±£¬À©³ä¶şÎ¬Êı×éÈİÁ¿
+	            {                                                  //å‚æ•°æŒ‡å®šçš„è¡Œæ•°æˆ–åˆ—æ•°è¾ƒå¤§æ—¶ï¼Œæ‰©å……äºŒç»´æ•°ç»„å®¹é‡
 	                int[][] source = this.element;
-	                this.element = new int[m*2][n*2];              //ÖØĞÂÉêÇë¶şÎ¬Êı×é¿Õ¼ä£¬ÔªËØ³õÖµÎª0
-	                for (int i=0; i<this.rows; i++)                //¸´ÖÆÔ­¶şÎ¬Êı×éÔªËØ
+	                this.element = new int[m*2][n*2];              //é‡æ–°ç”³è¯·äºŒç»´æ•°ç»„ç©ºé—´ï¼Œå…ƒç´ åˆå€¼ä¸º0
+	                for (int i=0; i<this.rows; i++)                //å¤åˆ¶åŸäºŒç»´æ•°ç»„å…ƒç´ 
 	                    for(int j=0; j<this.columns; j++)
 	                        this.element[i][j] = source[i][j];
 	            }
 	            this.rows = m;
 	            this.columns = n;
 	        }
-	        else throw new IllegalArgumentException("¾ØÕóĞĞÁĞÊı²»ÄÜ¡Ü0£¬m="+m+"£¬n="+n);
+	        else throw new IllegalArgumentException("çŸ©é˜µè¡Œåˆ—æ•°ä¸èƒ½â‰¤0ï¼Œm="+m+"ï¼Œn="+n);
 	    }
 	    
-	    //ÇóÒ»¸ö¾ØÕóµÄ×ªÖÃ¾ØÕó
+	    //æ±‚ä¸€ä¸ªçŸ©é˜µçš„è½¬ç½®çŸ©é˜µ
 		public Matrix transpose() {
 			Matrix tranMatrix=new Matrix(columns,rows);
 			
-			 for (int i=0; i<this.element.length&&i<this.rows;i++)          //valueÔªËØ²»×ãÊ±²¹0£¬ºöÂÔ¶àÓàÔªËØ
+			 for (int i=0; i<this.element.length&&i<this.rows;i++)          //valueå…ƒç´ ä¸è¶³æ—¶è¡¥0ï¼Œå¿½ç•¥å¤šä½™å…ƒç´ 
 		            for (int j=0; j<this.element[i].length&&j<this.columns;j++)
 		            	tranMatrix.element[j][i]=this.element[i][j];
 			return tranMatrix;
 		}
-	//ÅĞ¶ÏÒ»¸ö¾ØÕóÊÇ·ñÎªÉÏÈı½Ç¾ØÕó
+	//åˆ¤æ–­ä¸€ä¸ªçŸ©é˜µæ˜¯å¦ä¸ºä¸Šä¸‰è§’çŸ©é˜µ
 		public boolean isUpperTriangularMatrix() {
 			for (int i=0; i<this.element.length&& i<this.rows; i++) {
 	            for (int j=0; j<this.element[i].length && j<this.columns; j++){
@@ -100,7 +100,7 @@ public class Matrix {
 			}return true;
 
 		}
-	//ÅĞ¶ÏÒ»¸ö¾ØÕóÊÇ·ñÎªÏÂÈı½Ç¾ØÕó
+	//åˆ¤æ–­ä¸€ä¸ªçŸ©é˜µæ˜¯å¦ä¸ºä¸‹ä¸‰è§’çŸ©é˜µ
 		public boolean isLowerTriangularMatrix() {
 			for (int i=0; i<this.element.length&& i<this.rows; i++) {
 	            for (int j=0; j<this.element[i].length && j<this.columns; j++){
@@ -114,11 +114,11 @@ public class Matrix {
 	}
 			}return true;
 		}
-	//ÅĞ¶ÏÒ»¸ö¾ØÕóÊÇ·ñÎª¶Ô³Æ¾ØÕó
-		public boolean isSymmetricMatrix () {
+	//åˆ¤æ–­ä¸€ä¸ªçŸ©é˜µæ˜¯å¦ä¸ºå¯¹ç§°çŸ©é˜µ
+		public boolean isSymmetricMatrix() {
 			if(this.rows!=this.columns)
-				//JOptionPane.showMessageDialog(null,"Á½¸ö¾ØÕó²»Í¬ĞÍ£¬ÎŞ·¨ÔËËã£¡","ÏûÏ¢", JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(null,"¸Ã¾ØÕó²»Îª·½Õó£¬ÎŞ·¨ÅĞ¶ÏÊÇ·ñÎª¶Ô³Æ¾ØÕó","ÌáÊ¾ĞÅÏ¢",JOptionPane.WARNING_MESSAGE);
+				//JOptionPane.showMessageDialog(null,"ä¸¤ä¸ªçŸ©é˜µä¸åŒå‹ï¼Œæ— æ³•è¿ç®—ï¼","æ¶ˆæ¯", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null,"è¯¥çŸ©é˜µä¸ä¸ºæ–¹é˜µï¼Œæ— æ³•åˆ¤æ–­æ˜¯å¦ä¸ºå¯¹ç§°çŸ©é˜µ","æç¤ºä¿¡æ¯",JOptionPane.WARNING_MESSAGE);
 				else{
 
 				for (int i=0; i<this.element.length&& i<this.rows; i++) {
@@ -130,7 +130,7 @@ public class Matrix {
 				}return true;
 
 		}
-	//±È½ÏÁ½¸ö¾ØÕóÊÇ·ñÏàµÈ
+	//æ¯”è¾ƒä¸¤ä¸ªçŸ©é˜µæ˜¯å¦ç›¸ç­‰
 		public boolean equals(Matrix a) {
 		if(this.rows!=a.rows||this.columns!=a.columns){
 				return false;
@@ -148,44 +148,59 @@ public class Matrix {
 		return true;
 		}
 		
-	    //¾ØÕóthis+b
+	    //çŸ©é˜µthis+b
 		public Matrix add(Matrix b) {
 			Matrix subMatrix=new Matrix(this.rows,this.columns);    
 			if(this.rows==b.rows&&this.columns==b.columns){
 				
-				for (int i=0; i<b.element.length&& i<rows; i++)          //valueÔªËØ²»×ãÊ±²¹0£¬ºöÂÔ¶àÓàÔªËØ
+				for (int i=0; i<b.element.length&& i<rows; i++)          //valueå…ƒç´ ä¸è¶³æ—¶è¡¥0ï¼Œå¿½ç•¥å¤šä½™å…ƒç´ 
 		            for (int j=0; j<b.element[i].length&& j<columns;j++)
 		            	subMatrix.element[i][j]=(this.element[i][j]+b.element[i][j]);	
 			}else{
-				JOptionPane.showMessageDialog(null,"Á½¸ö¾ØÕó²»Í¬ĞÍ£¬ÎŞ·¨ÔËËã£¡","ÏûÏ¢", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null,"ä¸¤ä¸ªçŸ©é˜µä¸åŒå‹ï¼Œæ— æ³•è¿ç®—ï¼","æ¶ˆæ¯", JOptionPane.WARNING_MESSAGE);
 			}
 			return subMatrix;
 		}  
-	    //¾ØÕóthis-b
+	    //çŸ©é˜µthis-b
 		public Matrix sub(Matrix b) {
 			Matrix subMatrix=new Matrix(this.rows,this.columns);    
 			if(this.rows==b.rows&&this.columns==b.columns){
 				
-				for (int i=0; i<b.element.length&& i<rows; i++)          //valueÔªËØ²»×ãÊ±²¹0£¬ºöÂÔ¶àÓàÔªËØ
+				for (int i=0; i<b.element.length&& i<rows; i++)          //valueå…ƒç´ ä¸è¶³æ—¶è¡¥0ï¼Œå¿½ç•¥å¤šä½™å…ƒç´ 
 		            for (int j=0; j<b.element[i].length&& j<columns;j++)
 		            	subMatrix.element[i][j]=(this.element[i][j]-b.element[i][j]);	
 			}else{
-				JOptionPane.showMessageDialog(null,"Á½¸ö¾ØÕó²»Í¬ĞÍ£¬ÎŞ·¨ÔËËã£¡","ÏûÏ¢", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null,"ä¸¤ä¸ªçŸ©é˜µä¸åŒå‹ï¼Œæ— æ³•è¿ç®—ï¼","æ¶ˆæ¯", JOptionPane.WARNING_MESSAGE);
 			}
 			return subMatrix;
-		}   
-		
-		//¾ØÕóthis*b
+		}   		
+		//çŸ©é˜µthis*b
 		public Matrix multiply(Matrix b){
-			Matrix subMatrix=new Matrix(this.rows,this.columns);    
-			if(this.rows==b.rows&&this.columns==b.columns){
-				
-				for (int i=0; i<b.element.length&& i<rows; i++)          //valueÔªËØ²»×ãÊ±²¹0£¬ºöÂÔ¶àÓàÔªËØ
-		            for (int j=0; j<b.element[i].length&& j<columns;j++)
-		            	subMatrix.element[i][j]=(this.element[i][j]*b.element[i][j]);	
-			}else{
-				JOptionPane.showMessageDialog(null,"Á½¸ö¾ØÕó²»Í¬ĞÍ£¬ÎŞ·¨ÔËËã£¡","ÏûÏ¢", JOptionPane.WARNING_MESSAGE);
+			Matrix mulMatrix=new Matrix(this.rows,b.columns);  
+			//åˆ¤æ–­è¿ç®—çš„å¯è¡Œæ€§
+			if(this.columns!=b.rows){				
+				JOptionPane.showMessageDialog(null,"ä¸¤ä¸ªçŸ©é˜µç±»å‹ä¸åŒ¹é…ï¼Œæ— æ³•è¿›è¡Œä¹˜æ³•è¿ç®—ï¼","æ¶ˆæ¯", JOptionPane.WARNING_MESSAGE);
+				return null;
 			}
-			return subMatrix;
+			else{		
+				//å®šä¹‰ä¸¤ä¸ªçŸ©é˜µè¡Œåˆ—ä¸‹æ ‡ã€‚
+			 int i,j,k,l;
+        	 //éå†ä¹˜ç§¯äºŒç»´æ•°ç»„ï¼Œå®šä¹‰è¡Œåˆ—ä¸‹æ ‡m_i,m_j.
+        	 for (int m_i=0;m_i<mulMatrix.element.length&& m_i<rows; m_i++)    {
+		            for (int m_j=0;m_j<mulMatrix.element[m_i].length&&m_j<columns;m_j++){
+		            //	mulMatrix.element[m_i][m_j]
+		            	int number=0;
+		            	i=0;j=0;k=0;l=0;
+		            	while(j<this.columns&&k<b.rows){
+		            number+=(this.element[m_i][j++]*b.element[k++][m_j]);  }		            	
+		            	mulMatrix.element[m_i][m_j]=number;
+		            	
+		            	
+	  }//å†…å±‚forå¾ªç¯:éå†æŸä¸€è¡Œä¸­å„ä¸ªå…ƒç´ 
+       	 }//å¤–å±‚forå¾ªç¯:éå†äºŒç»´æ•°ç»„æ‰€æœ‰è¡Œ
+         
+			} //elseä½œç”¨åŸŸ
+			
+			return mulMatrix;
 		}
 }
