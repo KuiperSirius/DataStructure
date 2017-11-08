@@ -1,7 +1,6 @@
 import javax.swing.JOptionPane;
 
 public class Matrix {
-	
 		protected int rows, columns;                           //矩阵行数、列数
 	    protected int[][] element;                             //二维数组，存储矩阵元素
 
@@ -74,8 +73,7 @@ public class Matrix {
 	            this.columns = n;
 	        }
 	        else throw new IllegalArgumentException("矩阵行列数不能≤0，m="+m+"，n="+n);
-	    }
-	    
+	    }	    
 	    //求一个矩阵的转置矩阵
 		public Matrix transpose() {
 			Matrix tranMatrix=new Matrix(columns,rows);
@@ -148,7 +146,7 @@ public class Matrix {
 		return true;
 		}
 		
-	    //矩阵this+b
+	  //矩阵this+b
 		public Matrix add(Matrix b) {
 			Matrix subMatrix=new Matrix(this.rows,this.columns);    
 			if(this.rows==b.rows&&this.columns==b.columns){
