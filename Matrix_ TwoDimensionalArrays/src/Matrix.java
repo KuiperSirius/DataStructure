@@ -191,14 +191,11 @@ public class Matrix {
 		            	i=0;j=0;k=0;l=0;
 		            	while(j<this.columns&&k<b.rows){
 		            number+=(this.element[m_i][j++]*b.element[k++][m_j]);  }		            	
-		            	mulMatrix.element[m_i][m_j]=number;
-		            	
-		            	
+		            	mulMatrix.element[m_i][m_j]=number;	  		            	
 	  }//内层for循环:遍历某一行中各个元素
        	 }//外层for循环:遍历二维数组所有行
          
 			} //else作用域
-			
 			return mulMatrix;
 		}
 }
