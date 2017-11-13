@@ -87,10 +87,10 @@ public class Matrix {
 		public boolean isUpperTriangularMatrix() {
 			for (int i=0; i<this.element.length&& i<this.rows; i++) {
 	            for (int j=0; j<this.element[i].length && j<this.columns; j++){
-	           if(i<=j)break;
+	           if(i<=j) continue;
 	else{
 	if(this.element[i][j]==0)
-	break;
+	;
 	else
 	return false;
 	}
