@@ -88,7 +88,7 @@ public class Matrix {
 			for (int i=0; i<this.element.length&& i<this.rows; i++) {
 	            for (int j=0; j<this.element[i].length && j<this.columns; j++){
 	           if(i<=j) 
-			   //
+			   //break会结束程序块的执行，而continue只会结束其之后程序块的语句，并跳回循环程序块的开头继续下一个循环，而不是离开循环。
 			   continue;
 	else{
 	if(this.element[i][j]==0) continue;
