@@ -87,7 +87,9 @@ public class Matrix {
 		public boolean isUpperTriangularMatrix() {
 			for (int i=0; i<this.element.length&& i<this.rows; i++) {
 	            for (int j=0; j<this.element[i].length && j<this.columns; j++){
-	           if(i<=j) continue;
+	           if(i<=j) 
+			   //
+			   continue;
 	else{
 	if(this.element[i][j]==0) continue;
 	
@@ -102,7 +104,8 @@ public class Matrix {
 		public boolean isLowerTriangularMatrix() {
 			for (int i=0; i<this.element.length&& i<this.rows; i++) {
 	            for (int j=0; j<this.element[i].length && j<this.columns; j++){
-	           if(i>=j)continue;
+	           if(i>=j)
+			   continue;
 	else{
 	if(this.element[i][j]==0) continue;
 	else
@@ -120,7 +123,8 @@ public class Matrix {
 
 				for (int i=0; i<this.element.length&& i<this.rows; i++) {
 				            for (int j=0; j<this.element[i].length && j<this.columns; j++){
-				if(this.element[i][j]==this.element[j][i])continue;
+				if(this.element[i][j]==this.element[j][i])
+					continue;
 				else return false;
 				}
 					}
@@ -135,8 +139,8 @@ public class Matrix {
 		if(this.rows==a.rows&&this.columns==a.columns){
 			for (int i=0; i<this.element.length&&i<this.rows;i++){      
 		            for (int j=0;j<this.element[i].length&&j<this.columns;j++){
-		            	if(a.element[i][j]==this.element[i][j]){continue;
-		            		
+		            	if(a.element[i][j]==this.element[i][j]){
+					continue;	
 		            	}else
 		            		return false;	
 		            }
