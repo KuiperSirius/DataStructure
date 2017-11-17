@@ -5,24 +5,24 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class Main_1<T> {
-	;
+
 	
-	//²ãĞò±éÀú¹¹ÔìÍêÈ«¶ş²æÊ÷
+	//å±‚åºéå†æ„é€ å®Œå…¨äºŒå‰æ ‘
      public  BinaryNode<T> creatLevelTree(String str){ 
-	 int temp=0;//¶ş²æÁ´±íÏÂ±ê
+	 int temp=0;//äºŒå‰é“¾è¡¨ä¸‹æ ‡
 	 if(str.length()==1){		 
 		 return new BinaryNode(String.valueOf(str.charAt(0)));
 	 }
 	 BinaryNode<T> p=null;
 	 BinaryNode<T> root=null;
-	 //¿ØÖÆÑ­»·ÌåÌõ¼ş£º²»´óÓÚÍêÈ«¶ş²æÊ÷Î²Ò¶×Ó½áµãµÄ¸¸Ä¸½ÚµãÏÂ±ê
+	 //æ§åˆ¶å¾ªç¯ä½“æ¡ä»¶ï¼šä¸å¤§äºå®Œå…¨äºŒå‰æ ‘å°¾å¶å­ç»“ç‚¹çš„çˆ¶æ¯èŠ‚ç‚¹ä¸‹æ ‡
 	 while(temp<=(int)(str.length()-1)/2){
 		 p=new BinaryNode(String.valueOf(str.charAt(temp)));
-		 //×óº¢×ÓÅĞ¶ÏÌõ¼ş
+		 //å·¦å­©å­åˆ¤æ–­æ¡ä»¶
 		 if((temp*2+1)<str.length()){
 			 p.left=new BinaryNode(String.valueOf(str.charAt(temp*2+1)));
 		 }
-		 //ÓÒº¢×ÓÅĞ¶ÏÌõ¼ş
+		 //å³å­©å­åˆ¤æ–­æ¡ä»¶
 		 if((temp*2+2)<str.length()){
 			 p.right=new BinaryNode(String.valueOf(str.charAt(temp*2+2)));			 
 		 }	
@@ -37,8 +37,8 @@ public class Main_1<T> {
     	 Queue<T> nodeQueue=new ArrayDeque<T>();	 
     	 BinaryNode<T> temp =new BinaryNode<T>(); 
     	 nodeQueue.add(root.data);
-    	 int currentLevel=1;//µ±Ç°½ÚµãÊı
-    	 int nextLevel=0;//ÏÂÒ»²ã½ÚµãÊı
+    	 int currentLevel=1;//å½“å‰èŠ‚ç‚¹æ•°
+    	 int nextLevel=0;//ä¸‹ä¸€å±‚èŠ‚ç‚¹æ•°
     	 String str ="";
     	 while((temp.data=nodeQueue.poll())!=null){           //Notice
     		 if(temp.left!=null){
@@ -51,7 +51,7 @@ public class Main_1<T> {
     		 }
     		 str+=nodeQueue.poll();
     		 currentLevel--;
-    		 //µ±±¾²ã½ÚµãÊıÎªÁãÊ±£¬±íÊ¾ËùÓĞ¸Ã²ãµÄ×óÓÒº¢×Ó½ÚµãÒÑ¾­½øÈëË«¶Ë¶ÓÁĞ¡£
+    		 //å½“æœ¬å±‚èŠ‚ç‚¹æ•°ä¸ºé›¶æ—¶ï¼Œè¡¨ç¤ºæ‰€æœ‰è¯¥å±‚çš„å·¦å³å­©å­èŠ‚ç‚¹å·²ç»è¿›å…¥åŒç«¯é˜Ÿåˆ—ã€‚
     		 if(currentLevel==0){
     			 str+="\n";
     			 currentLevel=nextLevel;
@@ -64,9 +64,9 @@ public class Main_1<T> {
      
 	
 	public static void main(String[] args) {	 
-		//¶¨ÒåÊäÈëÊä³öÁ÷£¬»ñÈ¡¼üÅÌÊäÈë×Ö·û´®¡£
+		//å®šä¹‰è¾“å…¥è¾“å‡ºæµï¼Œè·å–é”®ç›˜è¾“å…¥å­—ç¬¦ä¸²ã€‚
 		/*
-		InputStreamReader stdin = new InputStreamReader(System.in);//¼üÅÌÊäÈë 
+		InputStreamReader stdin = new InputStreamReader(System.in);//é”®ç›˜è¾“å…¥ 
 		BufferedReader bufin = new BufferedReader(stdin); 
         try {
 			str = bufin.readLine();
