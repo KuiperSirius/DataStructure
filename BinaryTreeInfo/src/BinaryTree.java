@@ -1,4 +1,6 @@
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 //《数据结构（Java版）（第4版）》，作者：叶核亚，2014年7月19日
@@ -184,23 +186,30 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
 	 if(values.length==1){		 
 		 return new BinaryNode<T>(values[0]);
 	 }
-	 BinaryNode<T> p=null;//定义当前遍历节点
+	 
+//构造相应长度的列表来储存完全二叉树链表节点。	 
+	 List<BinaryNode<T>> list=new ArrayList<BinaryNode<T>>(values.length);
+	 for(int i=0;i<values.length;i++){
+	 list.add(new BinaryNode<T>(values[i]));
+	 }
+	// BinaryNode<T> p=null;//定义当前遍历节点
 	 BinaryNode<T> inRoot=null;
 	 //控制循环体条件：不大于完全二叉树尾叶子结点的父母节点下标
-	 while(temp<=(int)((values.length-1)/2)){
-		 p=new BinaryNode<T>(values[temp]);
+	 while(temp<=(int)((values.length-2)/2)){
+		// p=new BinaryNode<T>(values[temp]);
 		 //左孩子判断条件
 		 if((temp*2+1)<values.length){
-			 p.left=new BinaryNode<T>(values[temp*2+1]);
+			 list.get(temp).left=list.get(temp*2+1);
+					 //new BinaryNode<T>(values[temp*2+1]);
 		 }
 		 //右孩子判断条件
 		 if((temp*2+2)<values.length){
-			 p.right=new BinaryNode<T>(values[temp*2+2]);			 
+			 list.get(temp).right=list.get(temp*2+2);			 
 		 }	
 		 if(temp==0){ 
-			 inRoot=p;
+			 inRoot=list.get(0);
 			 }
-		 temp+=1;
+		 temp++;
 	 }
 	return inRoot; 
 }
@@ -208,45 +217,43 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
                
   //输出层序遍历节点字符串，返回str。
     public String levelorder(){
-   	 Queue<T> nodeQueue=new ArrayDeque<T>();	 
-   	 BinaryNode<T> temp=this.root; 
-   	 nodeQueue.add(root.data);
+    	//ArrayDeque数组双端队列没有容量限制
+   	 Queue<BinaryNode<T>> nodeQueue=new ArrayDeque<BinaryNode<T>>();	 
+   	 BinaryNode<T> temp=null; 
+   	 nodeQueue.add(this.root);
    	 int currentLevel=1;//当前节点数
    	 int nextLevel=0;//下一层节点数
-   	 String str="12";
-   	 
-   	 	 while((temp.data=nodeQueue.poll())!=null){           //Notice 输出了 null
-   		 if(temp.left.data!=null){
-   			 nodeQueue.add(temp.left.data);
+   	 String str="";
+ 
+   	 while((temp=nodeQueue.poll())!=null){           //Notice 输出了 null
+   		    if(temp.left!=null){
+   			 nodeQueue.add(temp.left);
    			 nextLevel++;
    		 }
-            if(temp.right.data!=null){
-           	 nodeQueue.add(temp.right.data);
+            if(temp.right!=null){
+           	 nodeQueue.add(temp.right);
            	 nextLevel++;
    		 }
-           
-   		 str+=nodeQueue.poll();
+          //  System.out.print(temp.data + " ");
+   		 /*str+=nodeQueue.poll().data;
+   		  * nodeQueue.poll()会获取并移除双端队列所表示的对队列头
+   		  * 如此操作会使temp左孩子率先出队列，节点提前
+   		  * 循环体造成最后一个节点位置为空（null),造成空指针异常。
+   		  * 2017-11-17-21:13
+   		  */
+              str+=temp.data;
    		 currentLevel--;
    		 //当本层节点数为零时，表示所有该层的左右孩子节点已经进入双端队列。
    		 if(currentLevel==0){
    			 str+="\n";
+   			 //System.out.println("\n");
    			 currentLevel=nextLevel;
    			 nextLevel=0;   					 
    		 }   	    		 
    	 } 
    	 return str;
-    }
-    
-    
-
-    
-    
-    
-    
-    
+    } 
     //【例6.1】  二叉树的构造、遍历及插入。
-    
-
     //【思考题6-3】【习题解答】
     public BinaryTree(BinaryTree<T> bitree)      //拷贝构造方法，深拷贝
     {
