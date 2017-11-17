@@ -1,51 +1,51 @@
-//¡¶Êı¾İ½á¹¹£¨Java°æ£©£¨µÚ4°æ£©¡·£¬×÷Õß£ºÒ¶ºËÑÇ£¬2014Äê7ÔÂ18ÈÕ
-//6.2.6   ¶ş²æÊ÷µÄ¶ş²æÁ´±íÊµÏÖ
-//1.  ¶ş²æÁ´±í½áµãÀà
+//ã€Šæ•°æ®ç»“æ„ï¼ˆJavaç‰ˆï¼‰ï¼ˆç¬¬4ç‰ˆï¼‰ã€‹ï¼Œä½œè€…ï¼šå¶æ ¸äºšï¼Œ2014å¹´7æœˆ18æ—¥
+//6.2.6   äºŒå‰æ ‘çš„äºŒå‰é“¾è¡¨å®ç°
+//1.  äºŒå‰é“¾è¡¨ç»“ç‚¹ç±»
 
-public class BinaryNode<T>                       //¶ş²æÊ÷µÄ¶ş²æÁ´±í½áµãÀà£¬TÖ¸¶¨½áµãµÄÔªËØÀàĞÍ
+public class BinaryNode<T>                       //äºŒå‰æ ‘çš„äºŒå‰é“¾è¡¨ç»“ç‚¹ç±»ï¼ŒTæŒ‡å®šç»“ç‚¹çš„å…ƒç´ ç±»å‹
 {
-    public T data;                               //Êı¾İÓò£¬´æ´¢Êı¾İÔªËØ
-    public BinaryNode<T> left, right;            //Á´Óò£¬·Ö±ğÖ¸Ïò×ó¡¢ÓÒº¢×Ó½áµã
+    public T data;                               //æ•°æ®åŸŸï¼Œå­˜å‚¨æ•°æ®å…ƒç´ 
+    public BinaryNode<T> left, right;            //é“¾åŸŸï¼Œåˆ†åˆ«æŒ‡å‘å·¦ã€å³å­©å­ç»“ç‚¹
 
-    //¹¹Ôì½áµã£¬dataÖ¸¶¨ÔªËØ£¬left¡¢right·Ö±ğÖ¸Ïò×óº¢×ÓºÍÓÒº¢×Ó½áµã
+    //æ„é€ ç»“ç‚¹ï¼ŒdataæŒ‡å®šå…ƒç´ ï¼Œleftã€rightåˆ†åˆ«æŒ‡å‘å·¦å­©å­å’Œå³å­©å­ç»“ç‚¹
     public BinaryNode(T data, BinaryNode<T> left, BinaryNode<T> right)
     {
         this.data = data;
         this.left = left;
         this.right = right;
     }
-    public BinaryNode()                    //¹¹ÔìÔªËØÎªdataµÄÒ¶×Ó½áµã
+ /*   public BinaryNode()                    //æ„é€ å…ƒç´ ä¸ºdataçš„å¶å­ç»“ç‚¹
     {
         this(null, null, null);
-    }
-    public BinaryNode(T data)                    //¹¹ÔìÔªËØÎªdataµÄÒ¶×Ó½áµã
+    }*/
+    public BinaryNode(T data)                    //æ„é€ å…ƒç´ ä¸ºdataçš„å¶å­ç»“ç‚¹
     {
         this(data, null, null);
     }
-    public String toString()                     //·µ»Ø½áµãÊı¾İÓòµÄÃèÊö×Ö·û´®
+    public String toString()                     //è¿”å›ç»“ç‚¹æ•°æ®åŸŸçš„æè¿°å­—ç¬¦ä¸²
     {
         return this.data.toString();
     }
-    public boolean isLeaf()                      //ÅĞ¶ÏÊÇ·ñÒ¶×Ó½áµã
+    public boolean isLeaf()                      //åˆ¤æ–­æ˜¯å¦å¶å­ç»“ç‚¹
     {
         return this.left==null && this.right==null;
     }
-    //ÒÔÉÏ6.2.6½Ú
+    //ä»¥ä¸Š6.2.6èŠ‚
 }
 /*
-//×¢Òâ£ºBinaryNode<T>Àà±ØĞëÊµÏÖtoString()·½·¨£¬ÒòÎª£¬·ñÔòÊä³öObjectÀàµÄtoString()·½·¨¡£
+//æ³¨æ„ï¼šBinaryNode<T>ç±»å¿…é¡»å®ç°toString()æ–¹æ³•ï¼Œå› ä¸ºï¼Œå¦åˆ™è¾“å‡ºObjectç±»çš„toString()æ–¹æ³•ã€‚
     SeqStack<BinaryNode<ExpData>> stack = new SeqStack<BinaryNode<ExpData>>();
     LinkedStack<BinaryNode<ExpData>> stack = new LinkedStack<BinaryNode<ExpData>>();
 
-    //¿ÉÉùÃ÷ÒÔÏÂ·½·¨
+    //å¯å£°æ˜ä»¥ä¸‹æ–¹æ³•
     public BinaryNode()
     {
         this(null, null, null);
     }
 
-    public boolean equals(Object obj)            //±È½ÏÁ½¸ö½áµãÖµÊÇ·ñÏàµÈ£¬¸²¸ÇObjectÀàµÄequals(obj)·½·¨
+    public boolean equals(Object obj)            //æ¯”è¾ƒä¸¤ä¸ªç»“ç‚¹å€¼æ˜¯å¦ç›¸ç­‰ï¼Œè¦†ç›–Objectç±»çš„equals(obj)æ–¹æ³•
     {
         return obj==this || obj instanceof BinaryNode<?> && this.data.equals(((BinaryNode<T>)obj).data);
     }    
 */
-//@author£ºYeheya¡£2014-10-9
+//@authorï¼šYeheyaã€‚2014-10-9
