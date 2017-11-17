@@ -1,4 +1,3 @@
-//《数据结构（Java版）（第4版）》，作者：叶核亚，2014年7月18日
 //6.2.6   二叉树的二叉链表实现
 //1.  二叉链表结点类
 
@@ -48,4 +47,4 @@ public class BinaryNode<T>                       //二叉树的二叉链表结�
         return obj==this || obj instanceof BinaryNode<?> && this.data.equals(((BinaryNode<T>)obj).data);
     }    
 */
-//@author：Yeheya。2014-10-9
+//@author：Sirius 2017-11-17
