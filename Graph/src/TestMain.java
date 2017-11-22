@@ -2,8 +2,13 @@
 public class TestMain {
 
 	public static void main(String[] args) {
-		String str="ABCDEFGH";
+		
 		SearchGraph<String> graph=new SearchGraph<String>(8);
+		String str="ABCDEFGH";
+		for(int i=0;i<str.length();i++){
+			graph.insertVertex(String.valueOf(str.charAt(i)));
+			
+		}
 		graph.insertEdge(0,1,15);
 		graph.insertEdge(1,0,15);
 		graph.insertEdge(1,3,20);
@@ -20,9 +25,7 @@ public class TestMain {
 		graph.insertEdge(4,3,1);
 		graph.insertEdge(5,7,1);
 		graph.insertEdge(7,5,1);
-		graph.depthFirstSearch();
-		
-		
+		graph.depthFirstSearch();	
 	}
 
 }
