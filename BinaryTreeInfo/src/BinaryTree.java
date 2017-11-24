@@ -1,9 +1,10 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 
-//《数据结构（Java版）（第4版）》
+//《数据结构（Java版）（第4版）》，作者：叶核亚，2014年7月19日
 //6.2.6   二叉树的二叉链表实现
 //2.  采用二叉链表存储的二叉树类声明
 //【思考题6-2】 基于遍历的操作
@@ -143,13 +144,11 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
     }
 
     //6. 构造二叉树
-    //（2） 标明空子树的先根序列表示
-
-         
+    //（2） 标明空子树的先根序列表示        
   /*  public BinaryTree(T[] prelist)                         //以标明空子树的先根遍历序列构造二叉树
     {
         this.root = create(prelist);
-    }  */
+    }  
     //以从i开始的标明空子树的先根序列，创建一棵以prelist[i]为根的子树，返回根结点，递归方法
     private int i=0;
     private BinaryNode<T> create(T[] prelist)
@@ -168,19 +167,62 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
         }
         return p;
     }
+    **/
+    
+    //根据先序中序序列来构造二叉树
+    public BinaryTree(T[] preSort, T[] inSort){
+    	this.root=creatTreePreInSort(preSort,inSort);
+    } 
+    /*私有先序中序数组构造方法
+     分别定义先序数组开始结点下标终止结点下标；
+     分别定义中序数组开始结点下标终止结点下标；  
+    */
+    private BinaryNode<T> creatTreePreInSort(T[] preSort,T[] inSort){
+    	if(preSort==null||inSort==null){
+    		return null;//表示当前结点为叶节点
+    	}
+    	BinaryNode<T> getRoot=null;
+    	for(int i=0;i<inSort.length;i++){  		
+    	if(inSort[i]==preSort[0]){
+    		getRoot=new BinaryNode<T>(inSort[i]);
+    		root.left=creatTreePreInSort(Arrays.copyOfRange(preSort,1,i+1),Arrays.copyOfRange(inSort,0,i));
+    		root.right=creatTreePreInSort(Arrays.copyOfRange(preSort,i+1,preSort.length),Arrays.copyOfRange(inSort,i+1,inSort.length));		
+    	}  	
+    	}
+	
+    	return getRoot;
+    }
+  //用字符串保存树结点的值,求二叉树中各结点数值的平均值
+    String str="";
+    public void getValueOfTotalNode(){
+    	getValue(this.root);
+    	int integer=0;
+    	for(int i=0;i<str.length();i++){
+    	integer+=Integer.parseInt(String.valueOf(str.charAt(i)));
+    	}
+    	System.out.println("二叉树中各结点数值的平均值"+integer/str.length());
+    }
+    private void getValue(BinaryNode<T> p)                 //先根次序遍历以p结点为根的子树，递归方法
+    {
+        if (p!=null)                                       //若二叉树不空
+        {
+            str+=p.data.toString();                       //先访问当前结点元素并输出
+            getValue(p.left);                              //按先根次序遍历p的左子树，递归调用，参数为左孩子
+            getValue(p.right);                             //按先根次序遍历p的右子树，递归调用，参数为右孩子
+        }
+    }
+    
     
     
     
     //构造二叉树，层序遍历方法
-    String str;
-    
-    
+
     public BinaryTree(T[] array)                         //以标明空子树的先根遍历序列构造二叉树
     {
       this.root =creatLevelTree(array);
     }
     
-  //层序遍历构造完全二叉树
+  //输入二叉树层序遍历序列，构造完全二叉树
     public  BinaryNode<T> creatLevelTree(T[] values){ 
 	 int temp=0;//二叉链表下标
 	 if(values.length==1){		 
@@ -241,7 +283,7 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
    		  * 循环体造成最后一个节点位置为空（null),造成空指针异常。
    		  * 2017-11-17-21:13
    		  */
-              str+=temp.data;
+            str+=temp.data;
    		 currentLevel--;
    		 //当本层节点数为零时，表示所有该层的左右孩子节点已经进入双端队列。
    		 if(currentLevel==0){
@@ -332,4 +374,3 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
 
     
 }
-//@author：Sirius 2017-11-17
