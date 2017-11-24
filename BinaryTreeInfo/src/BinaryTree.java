@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 
-//《数据结构（Java版）（第4版）》，作者：叶核亚，2014年7月19日
+//《数据结构（Java版）（第4版）》
 //6.2.6   二叉树的二叉链表实现
 //2.  采用二叉链表存储的二叉树类声明
 //【思考题6-2】 基于遍历的操作
