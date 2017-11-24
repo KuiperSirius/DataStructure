@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
-
-//《数据结构（Java版）（第4版）》，作者：叶核亚，2014年7月19日
+//《数据结构（Java版）（第4版）》
 //6.2.6   二叉树的二叉链表实现
 //2.  采用二叉链表存储的二叉树类声明
 //【思考题6-2】 基于遍历的操作
@@ -74,8 +73,7 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
             preorder(p.left);                              //按先根次序遍历p的左子树，递归调用，参数为左孩子
             preorder(p.right);                             //按先根次序遍历p的右子树，递归调用，参数为右孩子
         }
-    }
-    
+    } 
     public String toString()                               //返回先根次序遍历二叉树所有结点的描述字符串
     {
         return toString(this.root);
@@ -214,7 +212,6 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
     	for(int i=inStart;i<=inEnd;i++){  		
     	if(inSort[i]==preSort[preStrat]){
     	//	getRoot=new BinaryNode<T>(inSort[i]);	
-    	
     		getRoot.left=creatTreePreInSort(preSort,preStrat+1,preStrat+i-inStart,inSort,inStart,i-1);
     		getRoot.right=creatTreePreInSort(preSort,preStrat+i-inStart+1,preEnd,inSort,i+1,inEnd);
     		/**getRoot.left=creatTreePreInSort(Arrays.copyOfRange(preSort,1,i+1),Arrays.copyOfRange(inSort,0,i));
@@ -424,4 +421,6 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
 		//此处添加代码
 		return 0;	//此语句只用来验证语法，根据实际情况改写此语句
     }
-}
+}  /**
+2017-11-24
+*/
