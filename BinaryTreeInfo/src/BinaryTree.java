@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
-//《数据结构（Java版）（第4版）》
+//《数据结构（Java版）（第4版）》，作者：叶核亚，2014年7月19日
 //6.2.6   二叉树的二叉链表实现
 //2.  采用二叉链表存储的二叉树类声明
 //【思考题6-2】 基于遍历的操作
@@ -117,7 +118,34 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
             System.out.print(p.data.toString()+" ");       //后访问当前结点元素
         }
     }
-
+/**
+ * 后续遍历方法
+ * 非递归
+ * @return
+ */
+    public void postOrder(BinaryNode<T> getNode){
+    	Stack<BinaryNode<T>> stack1=new Stack<BinaryNode<T>>();//栈1表示节点的存储
+    	Stack<Integer> stack2=new Stack<Integer>();//栈2表示节点的存储
+    	int i=1;
+    	while(getNode!=null||!stack1.empty()){
+    		while(getNode!=null){
+    			stack1.push(getNode);
+    			stack2.push(0);
+    			getNode=getNode.left;
+    		}
+    		while(!stack1.empty()&&stack2.peek()==i){
+    			stack2.pop();
+    			System.out.println(stack1.pop().data.toString()+"");
+    		}
+    		if(!stack1.empty()){
+    			stack2.pop();
+    			stack2.push(1);
+    			getNode=stack1.peek();
+    			getNode=getNode.right;
+    		} 		
+    	}//while	
+    }
+    
     //【思考题6-2】 基于遍历的操作【习题解答】
     public int size()                                      //返回二叉树的结点数
     {
@@ -171,25 +199,29 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
     
     //根据先序中序序列来构造二叉树
     public BinaryTree(T[] preSort, T[] inSort){
-    	this.root=creatTreePreInSort(preSort,inSort);
+    	this.root=creatTreePreInSort(preSort,0,preSort.length-1,inSort,0,inSort.length-1);
     } 
     /*私有先序中序数组构造方法
      分别定义先序数组开始结点下标终止结点下标；
      分别定义中序数组开始结点下标终止结点下标；  
     */
-    private BinaryNode<T> creatTreePreInSort(T[] preSort,T[] inSort){
-    	if(preSort==null||inSort==null){
+    private BinaryNode<T> creatTreePreInSort(T[] preSort,int preStrat,int preEnd,T[] inSort,int inStart,int inEnd){
+    	if(preStrat>preEnd||inStart>inEnd){
     		return null;//表示当前结点为叶节点
     	}
-    	BinaryNode<T> getRoot=null;
-    	for(int i=0;i<inSort.length;i++){  		
-    	if(inSort[i]==preSort[0]){
-    		getRoot=new BinaryNode<T>(inSort[i]);
-    		root.left=creatTreePreInSort(Arrays.copyOfRange(preSort,1,i+1),Arrays.copyOfRange(inSort,0,i));
-    		root.right=creatTreePreInSort(Arrays.copyOfRange(preSort,i+1,preSort.length),Arrays.copyOfRange(inSort,i+1,inSort.length));		
+    	BinaryNode<T> getRoot=new BinaryNode<T>(preSort[preStrat]);
+    	//int i=0;
+    	for(int i=inStart;i<=inEnd;i++){  		
+    	if(inSort[i]==preSort[preStrat]){
+    	//	getRoot=new BinaryNode<T>(inSort[i]);	
+    	
+    		getRoot.left=creatTreePreInSort(preSort,preStrat+1,preStrat+i-inStart,inSort,inStart,i-1);
+    		getRoot.right=creatTreePreInSort(preSort,preStrat+i-inStart+1,preEnd,inSort,i+1,inEnd);
+    		/**getRoot.left=creatTreePreInSort(Arrays.copyOfRange(preSort,1,i+1),Arrays.copyOfRange(inSort,0,i));
+    		getRoot.right=creatTreePreInSort(Arrays.copyOfRange(preSort,i+1,preSort.length),Arrays.copyOfRange(inSort,i+1,inSort.length));		
+    	*/
     	}  	
     	}
-	
     	return getRoot;
     }
   //用字符串保存树结点的值,求二叉树中各结点数值的平均值
@@ -211,11 +243,34 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
             getValue(p.right);                             //按先根次序遍历p的右子树，递归调用，参数为右孩子
         }
     }
-
+    
+    
+    
+    //镜像二叉树算法
+    public BinaryNode<T> mirrorTree(BinaryNode<T> node){
+    	if(node==null){
+    		return null;
+    	} 
+    	return this.root=getMirrirTree(node);
+    }
+    //结点P为传入的根节点
+    private BinaryNode<T> getMirrirTree(BinaryNode<T> p){
+    	if(p==null){
+    		return null;
+    	}
+    	BinaryNode<T> leftTree=this.getMirrirTree(p.left);
+    	BinaryNode<T> rightTree=this.getMirrirTree(p.right);
+    	
+    	p.right=leftTree;
+    	p.left=rightTree;
+    	   	
+    	return p;
+    }
+    
+    
     
     //构造二叉树，层序遍历方法
-
-    public BinaryTree(T[] array)                         //以标明空子树的层序遍历序列构造二叉树
+    public BinaryTree(T[] array)                         //以标明空子树的层序遍历方法构造二叉树
     {
       this.root =creatLevelTree(array);
     }
@@ -369,6 +424,4 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
 		//此处添加代码
 		return 0;	//此语句只用来验证语法，根据实际情况改写此语句
     }
-
-    
 }
