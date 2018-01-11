@@ -37,11 +37,15 @@ public class Main_1<T> {
 		System.out.println(tree.levelorder());//测试镜像二叉树层序输出
 		
 		Integer[] preSort={1,2,4,5,3,6};//先序序列
-		Integer[] inSort={4,2,5,1,6,3};//中序序列
+		Integer[] inSort={4,2,5,1,6,3};//中序序列*/
 	
 		BinaryTree<Integer> tree_1=new BinaryTree<Integer>(preSort,inSort);
 		System.out.println(tree_1.levelorder());
 		
+		//求叶子节点数量
+		System.out.println("叶子节点数量为:"+tree.countLeaf());
+		//求叶子节点值
+		tree.leaf(); 
 	}
 
 }
