@@ -402,24 +402,48 @@ public class BinaryTree<T>                       //二叉树类，二叉链表�
 		//此处添加代码
 		return 0;	//此语句只用来验证语法，根据实际情况改写此语句
     }
-    public void leaf()                           //遍历输出叶子结点
+  public void leaf()                           //遍历输出叶子结点
     {
-        leaf(root);
+       System.out.println("叶子节点值为："+leaf(root)); 
     }
     //输出以p结点为根的子树的所有叶子结点。 
-    private void leaf(BinaryNode<T> p)
+    private String leaf(BinaryNode<T> p)
     {
-		//此处添加代码
+		String str1,str2;
+		if(p==null){ //空树
+			return null;
+		}
+		else if(p.left==null&&p.right==null){   //叶子节点
+			return p.data.toString()+",";
+		}
+		else {
+			
+			str1=leaf(p.left);
+			str2=leaf(p.right);
+		}
+ 	
+    	return str1+str2;
     }
     
     public int countLeaf()                       //返回二叉树的叶子结点数
     {
-        return countLeaf(root);
+        return countLeaf(this.root);
     }
     private int countLeaf(BinaryNode<T> p)  //返回以p结点为根的子树的叶子结点个数
-    {
-		//此处添加代码
-		return 0;	//此语句只用来验证语法，根据实际情况改写此语句
+    { 
+    	int num1;//左子树节点数
+    	int num2;
+		if(p==null){ //空树
+			return 0;
+		}
+		else if(p.left==null&&p.right==null){   //叶子节点
+			return 1;
+		}
+		else {
+			num1=countLeaf(p.left);
+			num2=countLeaf(p.right);
+		}
+		return num1+num2;	
     }
 }  /**
 2017-11-24
